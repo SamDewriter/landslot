@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+    <h1 class="title has-text-centered up-5">
+        Welcome, {{ name }}!
+    </h1>    
+</div>
+<div class="down-60">
+    <div class="tile is-ancestor">
+        <div class="tile is-4 is-vertical is-parent">
+            <div class="tile is-child">
+                <p class="title">All Blog Posts</p>
+                <p class="subtitle">Here are all the blog posts you have created.</p>
+                <ul>
+                    {% for post in posts %}
+                    <li>
+                        <a href="/blog/{{ post.id }}">{{ post.title }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="tile is-parent">
+            <div class="tile is-child">
+                <section class="section">
+                    <div>
+                        <span>Create A New Post</span>
+                    </div>
+                    <form class="has-text-centered" role="form" method="POST">
+                        {{ form.csrf}}
+                        <div class="down-15">
+                            <label for="title">Title</label>
+                            {{ form.title(class="input is-medium")}}
+                        </div>
+                        <div class="down-15">
+                            <label for="content">Content</label>
+                            {{ form.content(class="textarea is-small") }}
+                        </div>
+                        <div class="down-15">
+                            <label for="image_url">Image URL</label>
+                            {{ form.image_url(class="input is-small") }}
+                        </div>
+                        <div class="down-15 field">
+                            {{ form.submit(class="button is-primary is-medium") }}
+                            <!-- <button class="button is-info is-medium is-halfwidth">Submit</button> -->
+                        </div>
+                    </form>
+                 </section>
+            </div>
+        </div>
+    </div>
+</div>  
+{% endblock %}
+
+
+<!-- name="title" placeholder="Enter the title" id="title") -->
+<!-- name="content" placeholder="Enter the content" id="content" -->
+<!-- name="image_url" placeholder="Enter the image url" id="image_url" -->

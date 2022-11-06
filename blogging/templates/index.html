@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="{{ css }}">
+    <script src="https://kit.fontawesome.com/fb8a0eff4c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="bg-landing">
+        <div class="dark-scarf">
+            <nav>
+                <a href="{{ url_for('main.index') }}">Home</a>
+                <a href="{{ url_for('main.about') }}">About</a>
+                <a href="{{ url_for('main.contact') }}">Contact</a>
+                
+                {% if current_user.is_authenticated %}
+                <a href="{{ url_for('main.profile') }}">Profile</a>
+                {% endif %}
+
+                {% if not current_user.is_authenticated %}
+                <a href="{{ url_for('auth.login') }}">Login</a>
+                <a href="{{ url_for('auth.signup') }}">Sign Up</a>
+                {% endif %}
+                
+                {% if current_user.is_authenticated %}
+                <a href="{{ url_for('auth.logout') }}" class="navbar-item">Logout</a>
+                {% endif %}
+            </nav>
+            <div class="down-60 left">
+                <div><span class="white px18">Hello! Welcome to</span></div>
+                <div><span class="white px80 alfa">Landslot Blog</span></div>
+                <div>
+                    <p class="white px18">We give you the best and accurate gists from all over the world.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="down-25">
+        {% for blog in blogs %}
+        <section class="section">
+            <div class="tile is-ancestor">
+                <div class="tile is-parent is-8">
+                    <div class="tile is-child">
+                        <div class="media left">
+                            <div class="media-content">
+                                <figure class="image is-2by1">
+                                    <img src="{{ blog.image_url }}" alt="">
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tile is-parent">
+                    <div class="tile is-child">
+                        <a class="px40 black alfa" href="post/{{ blog.id }}">{{ blog.title }}</a>
+                        <p>{{ blog.created_at }}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% endfor %}
+    </div>
+    <section class="down-60">
+        <footer>
+            <div class="tile is-ancestor">
+                <div class="tile is-parent down-60 left">
+                    <div class="tile is-child">
+                        <p class="white px18">We give you the best and accurate gists from all over the world.</p>
+                        <div class="icon-container down-15">
+                            <div><i class="fa-brands fa-facebook"></i></div>
+                            <div class="icon-left"><i class="fa-brands fa-twitter"></i></div>
+                            <div class="icon-left"><i class="fa-brands fa-instagram"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tile is-parent">
+                    <div class="tile is-child">
+                        <div class="icon-container down-60">
+                            <div><img src="./static/images/icon-phone.svg" alt=""></div>
+                            <div><span>+1-543-123-4567</span></div>
+                          </div>
+                          <div class="icon-container down-2">
+                            <div><img src="./static/images/icon-email.svg" alt=""></div>
+                            <div><span>example@huddle.com</span></div>
+                          </div>
+                          <div class="icon-container">
+                            <div><img src="./static/images/icon-location.svg" alt=""></div>
+                            <div>
+                                <span>203 Fake St.</span>
+                                <div><span>Mountain View, San Francisco</span></div>
+                                <div><span>California, USA.</span></div>
+                            </div>
+
+                          </div>
+                    </div>
+                </div>
+                <div class="tile is-parent">
+                    <div class="tile is-child">
+                        <div class="down-60">
+                            <div class="container down-20">
+                              <div class="build"><span><a href="" class="white">About Us</a></span></div>
+                              <div class="down-3 build"><span><a href="" class="white">What we do</a></span></div>
+                              <div class="down-3 build"><span><a href="" class="white">FAQ</a></span></div>
+                              <div><span><a href="" class="white">Career</a></span></div>
+                              <div class="down-3"><span><a href="" class="white">Blog</a></span></div>
+                              <div class="down-3"><span><a href="" class="white">Contact Us</a></span></div>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+                <div class="tile is-parent">
+                    <div class="tile is-child">
+
+                    </div>
+                </div>
+            </div>   
+        </footer>
+      </section>
+</body>
+</html>
+ <!-- <div>
+    <h1 class="title has-text-centered">Welcome to LandSlot!</h1>
+    <figure class="image is-5by3">
+        <img src="static/images/landing.jpg" alt="">
+    </figure>
+</div>
+<div class="down-60">
+    {% for blog in blogs %}
+    <div class="box">
+        <div class="card-content">
+            <div class="media">
+                <div class="media-content">
+                    <figure>
+                        <img src="{{ blog.image_url }}" alt="">
+                    </figure>
+                    <p class="title is-4">{{ blog.title }}</p>
+                    <p class="subtitle is-6">{{ blog.author }}</p>
+                </div>
+            </div>
+            <div class="content">
+                {{ blog.content }}
+                <br>
+                <time datetime="2016-1-1">{{ blog.date }}</time>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>

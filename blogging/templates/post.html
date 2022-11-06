@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="{{ path }}">
+    <script src="https://kit.fontawesome.com/fb8a0eff4c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="blog-landing">
+        <div class="dark-scarf">
+            <nav>
+                <a href="{{ url_for('main.index') }}">Home</a>
+                <a href="{{ url_for('main.about') }}">About</a>
+                <a href="{{ url_for('main.contact') }}">Contact</a>
+                
+                {% if current_user.is_authenticated %}
+                <a href="{{ url_for('main.profile') }}">Profile</a>
+                {% endif %}
+
+                {% if not current_user.is_authenticated %}
+                <a href="{{ url_for('auth.login') }}">Login</a>
+                <a href="{{ url_for('auth.signup') }}">Sign Up</a>
+                {% endif %}
+                
+                {% if current_user.is_authenticated %}
+                <a href="{{ url_for('auth.logout') }}" class="navbar-item">Logout</a>
+                {% endif %}
+            </nav>
+            <div class="down-80 left">
+                <div class="centered"><span class="white px80 alfa">Blog Single</span></div>
+                <div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="down-100">
+        <div class="tile is-ancestor">
+            <div class="tile is-parent is-7 left">
+                <div class="tile is-child">
+                    <div class="media">
+                        <div class="media-content">
+                            <figure class="image is-2by1">
+                                <img src="{{ post.image_url }}" alt="">
+                            </figure>
+                        </div>
+                    </div>
+                    <div class="down-25">
+                        <span class="alfa px40">{{ post.title }}</span>
+                        <p>{{ post.content }}</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="tile is-parent low-left">
+                <div class="tile is-child">
+                    <div class="container">
+                        <span class="px20 alfa">Categories</span>
+                        <div class="down-15">
+                            <span class="black px18"><a href="" class="black">Illustration</a></span>
+                            <div class="down-3 build"><span class="px18"><a href="" class="black">Branding</a></span></div>
+                            <div class="down-3 build"><span class="px18"><a href="" class="black">Application</a></span></div>
+                            <div><span><a href="" class="black">Design</a></span></div>
+                            <div class="down-3"><span class="px18"><a href="" class="black">Marketing</a></span></div>
+                        </div>
+                    </div>
+                    <div class="container down-25">
+                        <span class="px20 alfa">Recent Blog</span>
+                        <div class="down-2">
+                            {% for blog in blogs %}
+                            <section class="section">
+                                <div class="tile is-ancestor">
+                                    <div class="tile is-parent is-4">
+                                        <div class="tile is-child">
+                                            <div class="media">
+                                                <div class="media-content">
+                                                    <figure class="image">
+                                                        <img src="{{ blog.image_url }}" alt="">
+                                                    </figure>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tile is-parent">
+                                        <div class="tile is-child">
+                                            <a class="black" href="/post/{{ blog.id }}">{{ blog.title }}</a>
+                                            <p>{{ blog.created_at }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="down-60">
+        <footer>
+            <div class="tile is-ancestor">
+                <div class="tile is-parent down-60 left">
+                    <div class="tile is-child">
+                        <p class="white px18">We give you the best and accurate gists from all over the world.</p>
+                        <div class="icon-container down-15">
+                            <div><i class="fa-brands fa-facebook"></i></div>
+                            <div class="icon-left"><i class="fa-brands fa-twitter"></i></div>
+                            <div class="icon-left"><i class="fa-brands fa-instagram"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tile is-parent">
+                    <div class="tile is-child">
+                        <div class="icon-container down-60">
+                            <div><img src="./static/images/icon-phone.svg" alt=""></div>
+                            <div><span>+1-543-123-4567</span></div>
+                          </div>
+                          <div class="icon-container down-2">
+                            <div><img src="./static/images/icon-email.svg" alt=""></div>
+                            <div><span>example@huddle.com</span></div>
+                          </div>
+                          <div class="icon-container">
+                            <div><img src="./static/images/icon-location.svg" alt=""></div>
+                            <div>
+                                <span>203 Fake St.</span>
+                                <div><span>Mountain View, San Francisco</span></div>
+                                <div><span>California, USA.</span></div>
+                            </div>
+
+                          </div>
+                    </div>
+                </div>
+                <div class="tile is-parent">
+                    <div class="tile is-child">
+                        <div class="down-60">
+                            <div class="container down-20">
+                              <div class="build"><span><a href="" class="white">About Us</a></span></div>
+                              <div class="down-3 build"><span><a href="" class="white">What we do</a></span></div>
+                              <div class="down-3 build"><span><a href="" class="white">FAQ</a></span></div>
+                              <div><span><a href="" class="white">Career</a></span></div>
+                              <div class="down-3"><span><a href="" class="white">Blog</a></span></div>
+                              <div class="down-3"><span><a href="" class="white">Contact Us</a></span></div>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+                <div class="tile is-parent">
+                    <div class="tile is-child">
+                    </div>
+                </div>
+            </div>   
+        </footer>
+      </section>    
+</body>
+</html>

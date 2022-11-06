@@ -1,0 +1,132 @@
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+nav {
+    width: 100%;
+    height: 80px;
+    text-align: right;
+    line-height: 8;
+}
+nav a {
+    line-height: 50px;
+    color: white;
+    margin-right: 35px;
+}
+footer {
+    width: 100%;
+    height: 400px;
+    color: #fff;
+    background: rgb(48, 45, 45);
+}
+
+.bg-landing {
+    background-image: url(../images/1.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 550px;
+    width: 100%;
+}
+.blog-landing {
+    background-image: url(../images/1.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 450px;
+    width: 100%;
+}
+.dark-scarf {
+    background-color: rgba(0, 0, 0, 0.8);
+    height: 100%;
+    width: 100%;
+}
+.down-2 {
+    margin-top: 2px;
+}
+.down-3 {
+    margin-top: 3px;
+}
+.down-10 {
+    margin-top: 10px;
+}
+.down-15 {
+    margin-top: 15px;
+}
+.down-25 {
+    margin-top: 25px;
+}
+.down-50 {
+    margin-top: 50px;
+}
+.down-60 {
+    margin-top: 60px;
+}
+.down-80 {
+    margin-top: 80px;
+}
+.down-100 {
+    margin-top: 100px;
+}
+.white {
+    color: #ffff;
+}
+.black {
+    color: #000;
+}
+.left {
+    margin-left: 80px;
+}
+.low-left {
+    margin-left: 50px;
+}
+.icon-left {
+    float: left;
+    margin-left: 20px;
+    /* margin-top: -130px; */
+  }
+.px18 {
+    font-size: 18px;
+}
+.px20 {
+    font-size: 20px;
+}
+.px40 {
+    font-size: 40px;
+}
+.px80 {
+    font-size: 80px;
+}
+.alfa {
+    font-family: 'Alfa Slab One', cursive;
+}
+.container {
+    width: 94%;
+    float: left;
+    margin-left: 3%;
+    position: relative;
+}
+
+.col-3 {
+    width: 25%;
+    float: left;
+    position: relative;
+}
+.icon-container {
+    /* grid styles */
+      display: flex;
+      padding: 10px;
+      /* grid-template-columns: 50% 50%;
+      grid-gap: -100px; */
+}
+.icon-container > div span {
+  flex: 1 1 auto;
+  margin: 20px;  /* and that, will result in a 10px gap */
+} 
+
+.centered {
+    text-align: center;
+}
